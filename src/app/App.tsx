@@ -565,6 +565,7 @@ const MENUS = {
       img: "https://images.unsplash.com/photo-1544530047-bb7fd03a8a6f?w=600",
       kcal: "620 kcal",
       price: "6,500",
+      noPhoto: true,
     },
     {
       id: 4,
@@ -1129,17 +1130,32 @@ function MenuCard({
     img: string;
     kcal: string;
     price: string;
+    noPhoto?: boolean;
   };
   onClick?: () => void;
 }) {
   return (
     <div style={styles.menuCard} onClick={onClick}>
-      <div style={styles.menuImgWrap}>
-        <img
-          src={menu.img}
-          alt={menu.name}
-          style={styles.menuImg}
-        />
+      <div style={{
+        ...styles.menuImgWrap,
+        backgroundColor: menu.noPhoto ? "#F0F0F0" : undefined,
+      }}>
+        {!menu.noPhoto ? (
+          <img
+            src={menu.img}
+            alt={menu.name}
+            style={styles.menuImg}
+          />
+        ) : (
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "100%", height: "100%" }}>
+            <svg width="90" height="73" viewBox="0 0 64 52" fill="none">
+              <ellipse cx="32" cy="44" rx="28" ry="6" fill="#D9D9D9" />
+              <path d="M8 40 C8 20, 56 20, 56 40" fill="#E0E0E0" />
+              <path d="M8 40 L56 40" stroke="#D0D0D0" strokeWidth="1.5" />
+              <rect x="29" y="16" width="6" height="6" rx="3" fill="#CDCDCD" />
+            </svg>
+          </div>
+        )}
         <span style={styles.kcalBadge}>{menu.kcal}</span>
       </div>
       <div style={styles.menuBody}>

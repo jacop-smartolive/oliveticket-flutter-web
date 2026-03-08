@@ -78,11 +78,11 @@ export default function MenuDetailPage({ menu, onBack }: MenuDetailPageProps) {
             <img src={menu.img} alt={menu.name} style={s.heroImg} />
           ) : (
             <div style={s.heroPlaceholder}>
-              <svg width="80" height="66" viewBox="0 0 80 66" fill="none">
-                <ellipse cx="40" cy="56" rx="36" ry="8" fill="#D9D9D9" />
-                <path d="M8 50 C8 22, 72 22, 72 50" fill="#E0E0E0" />
-                <path d="M8 50 L72 50" stroke="#D0D0D0" strokeWidth="1.5" />
-                <rect x="36" y="16" width="8" height="8" rx="4" fill="#CDCDCD" />
+              <svg width="120" height="97" viewBox="0 0 64 52" fill="none">
+                <ellipse cx="32" cy="44" rx="28" ry="6" fill="#D9D9D9" />
+                <path d="M8 40 C8 20, 56 20, 56 40" fill="#E0E0E0" />
+                <path d="M8 40 L56 40" stroke="#D0D0D0" strokeWidth="1.5" />
+                <rect x="29" y="16" width="6" height="6" rx="3" fill="#CDCDCD" />
               </svg>
             </div>
           )}
