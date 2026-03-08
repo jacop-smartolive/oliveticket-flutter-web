@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo } from "react";
 import type { CSSProperties } from "react";
 import { ChevronLeft, ChevronRight, RefreshCw, X, Check, Circle } from "lucide-react";
-import img from "figma:asset/5af74d6eee4a267ca2ecf406c0973d3b9d4fe038.png";
+const img = "https://images.unsplash.com/photo-1760020890915-ca605575b93b?w=600";
 import QrIcon from "../../imports/QrIcon";
 
 // ─── Design Tokens ───────────────────────────────────────────

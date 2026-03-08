@@ -24,6 +24,8 @@ import svgPaths from "../imports/svg-apf66xr4az";
 import QrIcon from "../imports/QrIcon";
 import QrPaymentPage from "./components/QrPaymentPage";
 import NotificationPage from "./components/NotificationPage";
+import MenuDetailPage from "./components/MenuDetailPage";
+import type { MenuDetailData } from "./components/MenuDetailPage";
 
 // ─── Keyframes for day tap animation ─────────────────────────
 // ⚠️ Flutter-01: @keyframes → AnimationController + Tween
@@ -649,6 +651,7 @@ export default function App() {
   const [isSticky, setIsSticky] = useState(false);
   const [showQrPayment, setShowQrPayment] = useState(false);
   const [showNotification, setShowNotification] = useState(false);
+  const [selectedMenu, setSelectedMenu] = useState<MenuDetailData | null>(null);
   const [pullDistance, setPullDistance] = useState(0);
   const [isRefreshing, setIsRefreshing] = useState(false);
   const touchStartY = useRef(0);
@@ -1004,7 +1007,7 @@ export default function App() {
         {/* ── Menu Cards ── */}
         <div style={styles.menuGrid}>
           {menus.map((menu) => (
-            <MenuCard key={menu.id} menu={menu} />
+            <MenuCard key={menu.id} menu={menu} onClick={() => setSelectedMenu({ ...menu, mealTime: mealTime })} />
           ))}
         </div>
       </div>
@@ -1078,6 +1081,11 @@ export default function App() {
       {showNotification && (
         <NotificationPage onBack={() => setShowNotification(false)} />
       )}
+
+      {/* ── Menu Detail Page ── */}
+      {selectedMenu && (
+        <MenuDetailPage menu={selectedMenu} onBack={() => setSelectedMenu(null)} />
+      )}
     </div>
   );
 }
@@ -1112,6 +1120,7 @@ function NavBtn({
 
 function MenuCard({
   menu,
+  onClick,
 }: {
   menu: {
     corner: string;
@@ -1121,9 +1130,10 @@ function MenuCard({
     kcal: string;
     price: string;
   };
+  onClick?: () => void;
 }) {
   return (
-    <div style={styles.menuCard}>
+    <div style={styles.menuCard} onClick={onClick}>
       <div style={styles.menuImgWrap}>
         <img
           src={menu.img}
