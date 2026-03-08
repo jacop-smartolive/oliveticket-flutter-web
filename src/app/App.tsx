@@ -26,6 +26,7 @@ import QrPaymentPage from "./components/QrPaymentPage";
 import NotificationPage from "./components/NotificationPage";
 
 // ─── Keyframes for day tap animation ─────────────────────────
+// ⚠️ Flutter-01: @keyframes → AnimationController + Tween
 const animationKeyframes = `
 @keyframes dayTapBounce {
   0% { transform: scale(1); }
@@ -127,7 +128,6 @@ const styles: Record<string, CSSProperties> = {
     justifyContent: "center",
     background: "none",
     border: "none",
-    cursor: "pointer",
     position: "relative",
   },
   bellDot: {
@@ -147,6 +147,7 @@ const styles: Record<string, CSSProperties> = {
     paddingBottom: spacing.lg,
     backgroundColor: colors.bg,
   },
+  // ⚠️ Flutter-02: boxShadow → BoxDecoration(boxShadow: [...])
   pointsCard: {
     display: "flex",
     flexDirection: "row",
@@ -194,7 +195,6 @@ const styles: Record<string, CSSProperties> = {
     marginRight: spacing.xxl,
     background: "none",
     border: "none",
-    cursor: "pointer",
     letterSpacing: -0.3,
   },
   tabIndicator: {
@@ -262,6 +262,7 @@ const styles: Record<string, CSSProperties> = {
     paddingTop: spacing.lg,
     backgroundColor: colors.white,
   },
+  // ⚠️ Flutter-03: linear-gradient → LinearGradient
   bannerWrap: {
     position: "relative",
     overflow: "hidden",
@@ -348,6 +349,7 @@ const styles: Record<string, CSSProperties> = {
     paddingBottom: spacing.xxl,
     backgroundColor: colors.white,
   },
+  // ⚠️ Flutter-05: calc() → Expanded/Flexible
   menuCard: {
     flexBasis: "calc(50% - 6px)",
     maxWidth: "calc(50% - 6px)",
@@ -367,6 +369,7 @@ const styles: Record<string, CSSProperties> = {
     height: "100%",
     objectFit: "cover",
   },
+  // ⚠️ Flutter-04: backdropFilter → BackdropFilter widget
   kcalBadge: {
     position: "absolute",
     top: 8,
@@ -439,7 +442,6 @@ const styles: Record<string, CSSProperties> = {
     gap: 2,
     background: "none",
     border: "none",
-    cursor: "pointer",
     padding: "4px 12px",
     minWidth: 60,
   },
@@ -448,6 +450,7 @@ const styles: Record<string, CSSProperties> = {
     fontWeight: 500,
     letterSpacing: -0.1,
   },
+  // ⚠️ Flutter-06: position: absolute FAB → FloatingActionButton
   floatingQR: {
     position: "absolute",
     right: spacing.xl,
@@ -467,10 +470,10 @@ const styles: Record<string, CSSProperties> = {
     fontWeight: 700,
     fontSize: 14,
     letterSpacing: -0.2,
-    cursor: "pointer",
     zIndex: 20,
     border: "none",
   },
+  // ⚠️ Flutter-07: position: sticky → SliverAppBar/SliverPersistentHeader
   stickyHeader: {
     position: "sticky",
     top: 0,
@@ -797,7 +800,6 @@ export default function App() {
             height: pullDistance > 0 || isRefreshing ? pullDistance : 0,
             overflow: "hidden",
             backgroundColor: colors.bg,
-            transition: isRefreshing ? "none" : (isPulling.current ? "none" : "height 0.3s ease"),
           }}
         >
           {(pullDistance > 0 || isRefreshing) && (
@@ -915,7 +917,6 @@ export default function App() {
                       boxShadow: isSelected
                         ? "0 2px 10px rgba(0,0,0,0.10)"
                         : "none",
-                      cursor: "pointer",
                       padding: "6px 4px",
                       background: "none",
                       animation:
@@ -992,7 +993,6 @@ export default function App() {
                 paddingRight: spacing.xl,
                 paddingTop: spacing.sm,
                 paddingBottom: spacing.sm,
-                cursor: "pointer",
                 letterSpacing: -0.3,
               }}
             >

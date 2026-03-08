@@ -35,12 +35,12 @@ const NOTIFICATIONS: Notification[] = [
   { id: 6, type: "결제 알림", amount: "7,500", time: "2주 전", initialRead: true },
 ];
 
-// ─── CSS for transitions (injected once) ─────────────────
+// ─── CSS for transitions (injected once) ─────────────────────
+// ⚠️ Flutter-08: CSS class 기반 애니메이션 → AnimatedOpacity, AnimatedScale
 const TRANSITION_CSS = `
   .notif-dot {
     width: 8px; height: 8px; border-radius: 50%;
     flex-shrink: 0; margin-top: 5px;
-    transition: opacity 0.25s ease, transform 0.25s ease;
   }
   .notif-dot-unread {
     background: #EE2B2F; opacity: 1; transform: scale(1);
@@ -50,16 +50,6 @@ const TRANSITION_CSS = `
   }
   .notif-dot-placeholder {
     background: transparent; opacity: 0;
-  }
-  .notif-text-transition {
-    transition: color 0.35s ease;
-  }
-  .notif-row {
-    transition: background 0.08s ease;
-    -webkit-tap-highlight-color: transparent;
-  }
-  .notif-row:active {
-    background: #EBEBF0 !important;
   }
 `;
 
@@ -257,7 +247,6 @@ const styles: Record<string, CSSProperties> = {
     justifyContent: "center",
     background: "none",
     border: "none",
-    cursor: "pointer",
     padding: 0,
   },
   headerTitle: {
@@ -277,7 +266,6 @@ const styles: Record<string, CSSProperties> = {
     paddingBottom: 7,
     borderRadius: 100,
     border: "none",
-    cursor: "pointer",
   },
   markAllText: {
     fontSize: 10,
@@ -299,7 +287,6 @@ const styles: Record<string, CSSProperties> = {
     paddingBottom: 15,
     borderBottom: `1px solid ${colors.border}`,
     backgroundColor: colors.white,
-    cursor: "pointer",
   },
   notificationContent: {
     flex: 1,

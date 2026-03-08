@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo } from "react";
 import type { CSSProperties } from "react";
 import { ChevronLeft, ChevronRight, RefreshCw, X, Check, Circle } from "lucide-react";
-const img = "https://images.unsplash.com/photo-1760020890915-ca605575b93b?w=600";
+import img from "figma:asset/5af74d6eee4a267ca2ecf406c0973d3b9d4fe038.png";
 import QrIcon from "../../imports/QrIcon";
 
 // ─── Design Tokens ───────────────────────────────────────────
@@ -77,7 +77,6 @@ export default function QrPaymentPage({ onBack }: QrPaymentPageProps) {
               strokeWidth={2.2}
               color={colors.black}
               style={{
-                transition: "transform 0.5s ease",
                 transform: `rotate(${spinCount * 180}deg)`,
               }}
             />
@@ -128,7 +127,6 @@ export default function QrPaymentPage({ onBack }: QrPaymentPageProps) {
                 <div style={{
                   ...pageStyles.qrImgWrap,
                   opacity: isExpired ? 0.25 : 1,
-                  cursor: isExpired ? "default" : "pointer",
                 }}
                   onClick={() => { if (!isExpired) setShowPaymentPopup(true); }}
                 >
@@ -234,7 +232,6 @@ const pageStyles: Record<string, CSSProperties> = {
     justifyContent: "center",
     background: "none",
     border: "none",
-    cursor: "pointer",
     padding: 0,
   },
   refreshBtn: {
@@ -245,7 +242,6 @@ const pageStyles: Record<string, CSSProperties> = {
     justifyContent: "center",
     background: "none",
     border: "none",
-    cursor: "pointer",
     padding: 0,
   },
   headerTitle: {
@@ -356,7 +352,6 @@ const pageStyles: Record<string, CSSProperties> = {
     fontSize: 14,
     fontWeight: 700,
     letterSpacing: -0.14,
-    cursor: "pointer",
   },
   pointsSection: {
     paddingLeft: spacing.lg,
@@ -418,7 +413,6 @@ const pageStyles: Record<string, CSSProperties> = {
     fontSize: 16,
     fontWeight: 700,
     letterSpacing: -0.16,
-    cursor: "pointer",
   },
   chargePIcon: {
     display: "inline-flex",
@@ -559,7 +553,6 @@ function PaymentCompletePopup({ onClose, onAdditionalPay }: { onClose: () => voi
       style={{
         ...popupStyles.overlay,
         opacity: slideIn ? 1 : 0,
-        transition: "opacity 0.3s ease",
       }}
       onClick={handleClose}
     >
@@ -567,7 +560,6 @@ function PaymentCompletePopup({ onClose, onAdditionalPay }: { onClose: () => voi
         style={{
           ...popupStyles.sheet,
           transform: slideIn ? "translateY(0)" : "translateY(100%)",
-          transition: "transform 0.35s cubic-bezier(0.32,0.72,0,1)",
         }}
         onClick={(e) => e.stopPropagation()}
       >
@@ -669,7 +661,6 @@ const popupStyles: Record<string, CSSProperties> = {
     backgroundColor: "#F0F0F0",
     borderRadius: 999,
     border: "none",
-    cursor: "pointer",
     padding: 0,
   },
   amountRow: {
@@ -700,7 +691,6 @@ const popupStyles: Record<string, CSSProperties> = {
     fontSize: 13,
     fontWeight: 700,
     letterSpacing: -0.13,
-    cursor: "pointer",
   },
   detailSection: {
     display: "flex",
