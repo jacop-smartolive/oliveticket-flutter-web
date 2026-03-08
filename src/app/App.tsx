@@ -75,15 +75,17 @@ const radius = {
 const styles: Record<string, CSSProperties> = {
   screen: {
     width: "100%",
-    minHeight: "100vh",
+    height: "100vh",
     display: "flex",
     flexDirection: "column",
     position: "relative",
+    overflow: "hidden",
     backgroundColor: colors.white,
     fontFamily: "'Pretendard', 'Noto Sans KR', sans-serif",
   },
   scrollArea: {
     flex: 1,
+    overflowY: "auto",
     backgroundColor: colors.white,
   },
   header: {
